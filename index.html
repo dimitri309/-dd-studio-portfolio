@@ -359,6 +359,7 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
   letter-spacing:.06em;
   color:var(--c-accent,var(--teal));
   transition:letter-spacing .35s var(--ease);
+  position:relative;z-index:2;pointer-events:auto;
 }
 .work-card:hover .card-link{letter-spacing:.14em}
 
@@ -371,6 +372,7 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
   padding:2.5rem;
   transform:translateY(100%);
   transition:transform .5s var(--ease);
+  pointer-events:none;
 }
 .work-card:hover .card-overlay{transform:translateY(0)}
 .card-tech{
@@ -644,6 +646,7 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
   margin-top:.8rem;
   opacity:.72;
   transition:opacity .2s;
+  position:relative;z-index:2;pointer-events:auto;
 }
 .cs-toggle:hover{opacity:1}
 .cs-arrow{

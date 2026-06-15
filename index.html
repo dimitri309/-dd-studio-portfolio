@@ -368,21 +368,25 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
   position:absolute;inset:0;
   background:rgba(0,0,0,.82);
   backdrop-filter:blur(3px);
-  display:flex;align-items:flex-end;
-  padding:2.5rem;
   transform:translateY(100%);
   transition:transform .5s var(--ease);
   pointer-events:none;
 }
 .work-card:hover .card-overlay{transform:translateY(0)}
 .card-tech{
+  position:absolute;top:16px;left:16px;
   font-size:.72rem;font-weight:600;
   letter-spacing:.16em;text-transform:uppercase;
   color:var(--c-accent,var(--teal));
   padding:.45rem .9rem;
   border:1px solid var(--c-accent,var(--teal));
   border-radius:2px;
+  z-index:2;
+  opacity:0;
+  transition:opacity .5s var(--ease);
+  pointer-events:none;
 }
+.work-card:hover .card-tech{opacity:1}
 
 /* ============================================================
    ABOUT
@@ -685,7 +689,7 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
 @media(prefers-reduced-motion:reduce){
   .marquee-track{animation:none}
   .rv{opacity:1;transform:none;transition:none}
-  .work-card,.card-overlay,.svc-card::before,.svc-icon{transition:none}
+  .work-card,.card-overlay,.card-tech,.svc-card::before,.svc-icon{transition:none}
 }
   </style>
 </head>
@@ -749,7 +753,8 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
             <a href="https://dimitri309.github.io/brew-and-bloom" class="card-link" target="_blank" rel="noopener">View Project →</a>
             <button class="cs-toggle" data-cs="cs-1">Read Case Study <em class="cs-arrow">↓</em></button>
           </div>
-          <div class="card-overlay"><span class="card-tech">HTML · CSS · JS · AI</span></div>
+          <span class="card-tech">HTML · CSS · JS · AI</span>
+          <div class="card-overlay"></div>
         </div>
         <div class="cs-panel" id="cs-1">
           <div class="cs-inner">
@@ -786,7 +791,8 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
             <a href="https://dimitri309.github.io/osteria-lina" class="card-link" target="_blank" rel="noopener">View Project →</a>
             <button class="cs-toggle" data-cs="cs-2">Read Case Study <em class="cs-arrow">↓</em></button>
           </div>
-          <div class="card-overlay"><span class="card-tech">HTML · CSS · JS · AI</span></div>
+          <span class="card-tech">HTML · CSS · JS · AI</span>
+          <div class="card-overlay"></div>
         </div>
         <div class="cs-panel" id="cs-2">
           <div class="cs-inner">
@@ -823,7 +829,8 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
             <a href="https://dimitri309.github.io/-forge-athletic" class="card-link" target="_blank" rel="noopener">View Project →</a>
             <button class="cs-toggle" data-cs="cs-3">Read Case Study <em class="cs-arrow">↓</em></button>
           </div>
-          <div class="card-overlay"><span class="card-tech">HTML · CSS · JS · AI</span></div>
+          <span class="card-tech">HTML · CSS · JS · AI</span>
+          <div class="card-overlay"></div>
         </div>
         <div class="cs-panel" id="cs-3">
           <div class="cs-inner">
@@ -860,7 +867,8 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
             <a href="https://dimitri309.github.io/lumio-dental" class="card-link" target="_blank" rel="noopener">View Project →</a>
             <button class="cs-toggle" data-cs="cs-4">Read Case Study <em class="cs-arrow">↓</em></button>
           </div>
-          <div class="card-overlay"><span class="card-tech">HTML · CSS · JS · AI</span></div>
+          <span class="card-tech">HTML · CSS · JS · AI</span>
+          <div class="card-overlay"></div>
         </div>
         <div class="cs-panel" id="cs-4">
           <div class="cs-inner">

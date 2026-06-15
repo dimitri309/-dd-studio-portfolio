@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>DD Studio — Web Design & AI Development · Tbilisi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
 /* ============================================================
    TOKENS & RESET
@@ -22,8 +22,8 @@
   --light:   #f0ede8;
   --ink:     #0d0d0d;
   --border:  rgba(240,237,232,.08);
-  --syne:    'Syne',system-ui,sans-serif;
-  --inter:   'Inter',system-ui,sans-serif;
+  --syne:    'Syne','Noto Sans Georgian',system-ui,sans-serif;
+  --inter:   'Inter','Noto Sans Georgian',system-ui,sans-serif;
   --nav-h:   64px;
   --ease:    cubic-bezier(.25,.46,.45,.94);
 }
@@ -131,6 +131,31 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
   transition:background .25s,box-shadow .25s;
 }
 .nav-cta:hover{background:#1de8e8;box-shadow:0 0 24px rgba(0,212,212,.3)}
+
+/* LANG TOGGLE */
+.lang-toggle{
+  display:flex;align-items:center;gap:.35rem;
+  flex-shrink:0;
+}
+.lang-btn{
+  background:none;border:none;
+  font-family:var(--inter);
+  font-size:.72rem;font-weight:600;
+  letter-spacing:.1em;
+  color:var(--text-d);
+  cursor:none;
+  padding:.2rem 0;
+  transition:color .2s;
+}
+.lang-btn.active{color:var(--teal)}
+.lang-btn:hover{color:var(--text)}
+.lang-sep{
+  font-size:.65rem;
+  color:var(--text-d);
+  opacity:.35;
+  user-select:none;
+  pointer-events:none;
+}
 
 /* ============================================================
    BUTTONS
@@ -611,6 +636,7 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
 @media(max-width:960px){
   #nav{padding:0 2rem}
   .nav-links{display:none}
+  .lang-toggle{margin-left:auto}
 
   .hero-inner{padding:0 2rem}
   .hero-h{font-size:clamp(2.8rem,9vw,4.5rem)}
@@ -708,6 +734,11 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
       <li><a href="#services" class="nav-link" data-nav="services">Services</a></li>
       <li><a href="#contact"  class="nav-link" data-nav="contact">Contact</a></li>
     </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn" data-lang="en">EN</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="ge">GE</button>
+    </div>
     <a href="#contact" class="btn-mag nav-cta">Let's Talk</a>
   </nav>
 
@@ -751,7 +782,7 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
           </div>
           <div class="card-foot">
             <a href="https://dimitri309.github.io/brew-and-bloom" class="card-link" target="_blank" rel="noopener">View Project →</a>
-            <button class="cs-toggle" data-cs="cs-1">Read Case Study <em class="cs-arrow">↓</em></button>
+            <button class="cs-toggle" data-cs="cs-1"><span class="cs-lbl">Read Case Study</span> <em class="cs-arrow">↓</em></button>
           </div>
           <span class="card-tech">HTML · CSS · JS · AI</span>
           <div class="card-overlay"></div>
@@ -789,7 +820,7 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
           </div>
           <div class="card-foot">
             <a href="https://dimitri309.github.io/osteria-lina" class="card-link" target="_blank" rel="noopener">View Project →</a>
-            <button class="cs-toggle" data-cs="cs-2">Read Case Study <em class="cs-arrow">↓</em></button>
+            <button class="cs-toggle" data-cs="cs-2"><span class="cs-lbl">Read Case Study</span> <em class="cs-arrow">↓</em></button>
           </div>
           <span class="card-tech">HTML · CSS · JS · AI</span>
           <div class="card-overlay"></div>
@@ -827,7 +858,7 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
           </div>
           <div class="card-foot">
             <a href="https://dimitri309.github.io/-forge-athletic" class="card-link" target="_blank" rel="noopener">View Project →</a>
-            <button class="cs-toggle" data-cs="cs-3">Read Case Study <em class="cs-arrow">↓</em></button>
+            <button class="cs-toggle" data-cs="cs-3"><span class="cs-lbl">Read Case Study</span> <em class="cs-arrow">↓</em></button>
           </div>
           <span class="card-tech">HTML · CSS · JS · AI</span>
           <div class="card-overlay"></div>
@@ -865,7 +896,7 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
           </div>
           <div class="card-foot">
             <a href="https://dimitri309.github.io/lumio-dental" class="card-link" target="_blank" rel="noopener">View Project →</a>
-            <button class="cs-toggle" data-cs="cs-4">Read Case Study <em class="cs-arrow">↓</em></button>
+            <button class="cs-toggle" data-cs="cs-4"><span class="cs-lbl">Read Case Study</span> <em class="cs-arrow">↓</em></button>
           </div>
           <span class="card-tech">HTML · CSS · JS · AI</span>
           <div class="card-overlay"></div>
@@ -1114,6 +1145,93 @@ body.cur-ia #cur-ring{width:46px;height:46px;border-color:rgba(255,255,255,.9)}
       msg.style.display = 'block';
     }, 900);
   });
+
+  /* ── LANGUAGE TOGGLE ────────────────────── */
+  const DICT = [
+    // NAV
+    { s:'[data-nav="work"]',     en:'Work',            ge:'სამუშაოები' },
+    { s:'[data-nav="about"]',    en:'About',           ge:'ჩვენ შესახებ' },
+    { s:'[data-nav="services"]', en:'Services',        ge:'სერვისები' },
+    { s:'[data-nav="contact"]',  en:'Contact',         ge:'კონტაქტი' },
+    { s:'.nav-cta',              en:"Let's Talk",      ge:'დაგვიკავშირდით' },
+    // HERO
+    { s:'.hero-h span:first-child', en:'We build websites',                        ge:'ჩვენ ვქმნით ვებსაიტებს' },
+    { s:'.hero-h span:last-child',  en:'that <em>mean</em> business.',             ge:'რომლებიც <em>მუშაობს</em>', html:true },
+    { s:'.hero-tag',   en:'Custom web design for local businesses — built fast, built to convert.',
+                       ge:'ადგილობრივი ბიზნესის კასტომური ვებ დიზაინი — სწრაფად შექმნილი, კონვერსიაზე ორიენტირებული.' },
+    { s:'.cta-filled', en:'See Our Work',    ge:'იხილეთ სამუშაოები' },
+    { s:'.cta-outline', en:'Get a Free Demo', ge:'მიიღეთ უფასო დემო' },
+    // MARQUEE
+    { s:'.marquee-track span', all:true,
+      en:'Web Design · Fast Turnaround · Mobile-First · Fast Delivery · Local Business Specialist · Tbilisi, Georgia ·  ',
+      ge:'ვებ დიზაინი · მობილური ვერსია · სწრაფი მიწოდება · ადგილობრივი ბიზნესის სპეციალისტი · თბილისი, საქართველო ·  ' },
+    // WORK
+    { s:'#work .label',     en:'Selected Work',          ge:'შერჩეული სამუშაოები' },
+    { s:'#work .section-h', en:'Four projects.<br>Four industries.', ge:'ოთხი პროექტი.<br>ოთხი ინდუსტრია.', html:true },
+    { s:'#work .work-item:nth-child(1) .card-desc', en:'Immersive scroll-snap gallery with real photography',    ge:'ნამდვილი ფოტოებით სავსე ჩაძირვადი გალერეა' },
+    { s:'#work .work-item:nth-child(2) .card-desc', en:'Cinematic horizontal scroll with magnetic interactions', ge:'კინემატოგრაფიული ჰორიზონტალური გადახვევა მაგნიტური ინტერაქციებით' },
+    { s:'#work .work-item:nth-child(3) .card-desc', en:'Sticky split-screen with scrollytelling image swap',     ge:'გამყარებული გაყოფილი ეკრანი სქროლზე ცვლადი სურათებით' },
+    { s:'#work .work-item:nth-child(4) .card-desc', en:'Multi-step booking form with side navigation',           ge:'მრავალსაფეხუროვანი ჯავშნის ფორმა გვერდითი ნავიგაციით' },
+    { s:'.card-link', all:true, en:'View Project →', ge:'პროექტის ნახვა →' },
+    { s:'.cs-lbl',    all:true, en:'Read Case Study',     ge:'კეისის წაკითხვა' },
+    // ABOUT
+    { s:'#about .label', en:'About', ge:'ჩვენ შესახებ' },
+    { s:'.about-h', en:'A studio of one<br>with the output<br>of <em>many.</em>', ge:'ერთი სტუდია —<br>მრავლის <em>შედეგით.</em>', html:true },
+    { s:'.bio-text',
+      en:'DD Studio is a one-person web studio run out of Tbilisi, Georgia. We use modern tools and AI technology to build fast, beautiful, conversion-focused websites for local businesses — at a fraction of agency prices. Every site is hand-crafted, unique, and built to make your business look as good as it actually is.',
+      ge:'DD Studio — ერთი ადამიანის ვებ სტუდია, გამომდინარე თბილისიდან. ჩვენ ვიყენებთ თანამედროვე ინსტრუმენტებს და AI ტექნოლოგიებს სწრაფი, მშვენიერი, კონვერსიაზე ორიენტირებული ვებსაიტების შესაქმნელად ადგილობრივი ბიზნესებისთვის — სააგენტოს ფასების მცირე ნაწილად. თითოეული საიტი ხელნაკეთია, უნიკალური და შექმნილია, რომ თქვენი ბიზნესი ისე კარგად გამოიყურებოდეს, როგორც სინამდვილეში არის.' },
+    { s:'.cta-ink', en:'Work With Us →', ge:'ითანამშრომლეთ ჩვენთან →' },
+    { s:'.about-stats .stat:nth-child(1) .stat-label', en:'Projects',               ge:'პროექტი' },
+    { s:'.about-stats .stat:nth-child(2) .stat-label', en:'Industries',             ge:'ინდუსტრია' },
+    { s:'.about-stats .stat:nth-child(3) .stat-label', en:'Goal: Your First Client', ge:'მიზანი: თქვენი პირველი კლიენტი' },
+    // SERVICES
+    { s:'#services .label',     en:'Services',     ge:'სერვისები' },
+    { s:'#services .section-h', en:'What we do.',  ge:'რას ვაკეთებთ.' },
+    { s:'.svc-row .svc-card:nth-child(1) .svc-title', en:'Custom Website',           ge:'კასტომური ვებსაიტი' },
+    { s:'.svc-row .svc-card:nth-child(1) .svc-desc',  en:'A fully unique site designed around your brand. No templates, no shortcuts. Built to convert visitors into customers.',
+                                                       ge:'სრულად უნიკალური საიტი, შექმნილი თქვენი ბრენდის ირგვლივ. შაბლონებისა და მოკლე გზების გარეშე. შექმნილია ვიზიტორების კლიენტებად გადასაქცევად.' },
+    { s:'.svc-row .svc-card:nth-child(2) .svc-title', en:'Faster & More Affordable', ge:'სწრაფი და ხელმისაწვდომი' },
+    { s:'.svc-row .svc-card:nth-child(2) .svc-desc',  en:'Modern tools let us build premium websites in days, not weeks — saving you time and money without sacrificing quality.',
+                                                       ge:'თანამედროვე ინსტრუმენტები გვაძლევს საშუალებას შევქმნათ პრემიუმ ვებსაიტები დღეებში, კვირების ნაცვლად — ვზოგავთ თქვენს დროს და ფულს ხარისხის გარეშე.' },
+    { s:'.svc-row .svc-card:nth-child(3) .svc-title', en:'Free Demo First',           ge:'პირველ რიგში უფასო დემო' },
+    { s:'.svc-row .svc-card:nth-child(3) .svc-desc',  en:'We build you a free homepage demo before you commit to anything. See the quality before you spend a single lari.',
+                                                       ge:'ჩვენ შევქმნით უფასო საწყისი გვერდის დემოს ვალდებულების აღებამდე. იხილეთ ხარისხი ერთი ლარის დახარჯვამდე.' },
+    // CONTACT
+    { s:'#contact .label', en:'Contact', ge:'კონტაქტი' },
+    { s:'.contact-h',  en:'Ready to grow your<br>business <em>online?</em>', ge:'მზად ხართ განავითაროთ<br>თქვენი ბიზნესი <em>ონლაინ?</em>', html:true },
+    { s:'.contact-sub', en:"We'll build you a free demo — no strings attached.", ge:'ჩვენ შევქმნით უფასო დემოს — ყოველგვარი ვალდებულების გარეშე.' },
+    { s:'label[for="f-name"]',  en:'Your Name',         ge:'თქვენი სახელი' },
+    { s:'label[for="f-biz"]',   en:'Business Name',     ge:'ბიზნესის სახელი' },
+    { s:'label[for="f-email"]', en:'Email',             ge:'ელ-ფოსტა' },
+    { s:'label[for="f-need"]',  en:'What do you need?', ge:'რა გჭირდებათ?' },
+    { s:'#f-need option[value=""]',         en:'Select an option', ge:'აირჩიეთ ვარიანტი' },
+    { s:'#f-need option[value="new"]',      en:'New Website',      ge:'ახალი ვებსაიტი' },
+    { s:'#f-need option[value="redesign"]', en:'Redesign',         ge:'განახლება' },
+    { s:'#f-need option[value="other"]',    en:'Other',            ge:'სხვა' },
+    { s:'.submit-btn',  en:'Send Message',  ge:'შეტყობინების გაგზავნა' },
+    { s:'#form-success', en:"Message sent! We'll be in touch within 24 hours.", ge:'შეტყობინება გაგზავნილია! ჩვენ დაგიკავშირდებით 24 საათის განმავლობაში.' },
+    // FOOTER
+    { s:'#footer p', en:'© 2026 DD Studio · Tbilisi, Georgia · Built with Claude AI',
+                     ge:'© 2026 DD Studio · თბილისი, საქართველო · შექმნილია Claude AI-ით' },
+  ];
+
+  function applyLang(lang) {
+    const isGe = lang === 'ge';
+    DICT.forEach(({ s, all, html, en, ge }) => {
+      const text = isGe ? ge : en;
+      const els  = all ? $$(s) : ($(s) ? [$(s)] : []);
+      els.forEach(el => { html ? (el.innerHTML = text) : (el.textContent = text); });
+    });
+    $$('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    document.documentElement.lang = isGe ? 'ka' : 'en';
+    localStorage.setItem('dd-lang', lang);
+  }
+
+  $$('.lang-btn').forEach(btn =>
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang))
+  );
+
+  applyLang(localStorage.getItem('dd-lang') || 'en');
   </script>
 </body>
 </html>

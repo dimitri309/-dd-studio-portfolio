@@ -536,52 +536,92 @@ html[lang="ka"] .hero-h .thin{font-style:normal;font-weight:300}
 }
 
 /* ================================================================
-   CONTACT — full klein blue
+   CONTACT — the terminal
+   every project ships in a browser window; the studio itself lives
+   in a terminal. near-black, phosphor green, typed on arrival.
 ================================================================ */
 #contact{
-  background:var(--blue);color:#fff;
+  --term-bg:    #0A0E0B;
+  --term-bar:   #10160F;
+  --term-green: #46F27F;
+  --term-txt:   #C7D2C4;
+  --term-dim:   #6E7B6C;
+  --term-line:  rgba(70,242,127,.16);
+  background:var(--ink);color:var(--term-txt);
   position:relative;z-index:2;overflow:hidden;
 }
-#contact .sec-head .mono-l{color:rgba(255,255,255,.55)}
-.contact-in{padding:clamp(4rem,10vh,7rem) var(--gutter) clamp(3rem,6vh,4.5rem)}
-.contact-k{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block;margin-bottom:1.6rem}
-.contact-h{
-  font-size:clamp(2.3rem,6.8vw,6.4rem);
-  margin-bottom:clamp(2.2rem,5vh,3.6rem);
+#contact :focus-visible{outline-color:var(--term-green)}
+#contact ::selection{background:var(--term-green);color:var(--term-bg)}
+.contact-in{
+  position:relative;
+  padding:clamp(4.5rem,11vh,8rem) var(--gutter) clamp(3.5rem,8vh,6rem);
+  display:flex;justify-content:center;
 }
-.contact-h .row{display:block;overflow:hidden}
-.contact-h .row>span{display:block}
-.mail-line{
-  display:inline-flex;align-items:center;gap:1.2rem;
-  font-stretch:95%;font-weight:500;
-  font-size:clamp(1.15rem,3vw,2.2rem);
-  border-bottom:2px solid rgba(255,255,255,.4);
-  padding-bottom:.5rem;
-  transition:border-color .3s;
-  word-break:break-all;
+/* the terminal window */
+.term{
+  width:min(100%,880px);
+  background:var(--term-bg);
+  border:1px solid var(--term-line);
+  border-radius:10px;overflow:hidden;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.7),0 0 80px -30px rgba(70,242,127,.14);
 }
-.mail-line:hover{border-color:#fff}
-.mail-line .arr{font-size:.8em;transition:transform .35s var(--ease)}
-.mail-line:hover .arr{transform:translate(6px,-4px)}
-.contact-links{
-  display:flex;gap:2.2rem;flex-wrap:wrap;
-  margin-top:clamp(2.4rem,6vh,4rem);
+.term-bar{
+  display:flex;align-items:center;gap:.9rem;
+  padding:.62rem .95rem;
+  background:var(--term-bar);
+  border-bottom:1px solid var(--term-line);
 }
-.contact-links a{
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,255,255,.72);display:inline-flex;gap:.55rem;align-items:center;
-  transition:color .3s;
+.term-bar .brw-dots i{background:rgba(199,210,196,.22)}
+.term-title{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:lowercase;
+  color:var(--term-dim);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
-.contact-links a:hover{color:#fff}
-.contact-glyph{
-  position:absolute;right:-3vw;bottom:-12vh;
-  font-family:var(--disp);font-stretch:118%;letter-spacing:-.04em;font-weight:900;
-  font-size:clamp(11rem,26vh,20rem);line-height:1;
-  color:rgba(255,255,255,.08);pointer-events:none;user-select:none;
+.term-body{
+  position:relative;
+  font-family:var(--mono);
+  font-size:clamp(.78rem,1.5vw,.95rem);
+  line-height:1.9;
+  padding:clamp(1.4rem,4vw,2.6rem) clamp(1.1rem,4vw,2.8rem) clamp(1.8rem,4vw,3rem);
+  min-height:16em;
 }
+/* CRT scanlines, barely there */
+.term-body::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px);
+}
+.t-line{display:block;white-space:pre-wrap;word-break:break-word}
+/* armed = waiting to be typed; JS lifts this line by line */
+#contact.armed .t-line{visibility:hidden}
+.t-prompt{color:var(--term-green)}
+.t-cmd{color:#F2F5F0}
+.t-key{color:var(--term-dim)}
+.t-ok{color:var(--term-green)}
+/* the one loud line the command prints */
+.t-line.t-big{
+  color:#F2F5F0;
+  font-size:clamp(1.15rem,3.4vw,1.9rem);
+  line-height:1.35;
+  margin:.55em 0 .6em;
+}
+.t-big .t-ok{color:var(--term-green)}
+.term-body a{
+  color:var(--term-txt);
+  text-decoration:underline;text-decoration-color:rgba(199,210,196,.35);
+  text-underline-offset:.22em;
+  transition:background .15s,color .15s;
+}
+/* reverse-video hover, like a terminal selection */
+.term-body a:hover{background:var(--term-green);color:var(--term-bg);text-decoration:none}
+.t-cursor{
+  display:inline-block;color:var(--term-green);
+  animation:t-blink 1.06s steps(1) infinite;
+  transform:translateY(.05em);
+}
+@keyframes t-blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 footer{
-  background:var(--blue);color:rgba(255,255,255,.6);
-  border-top:1px solid rgba(255,255,255,.22);
+  background:var(--ink);color:#6E7B6C;
+  border-top:1px solid rgba(70,242,127,.14);
   padding:1.2rem var(--gutter);
   display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
   font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
@@ -747,7 +787,7 @@ footer{
                 <span data-i18n="p2.tag1">Italian restaurant</span>
                 <span data-i18n="p2.tag2">Concept build</span>
               </div>
-              <p class="proj-desc" data-i18n="p2.desc">Candlelight as a design system. Deep green and burgundy, serif type with room to breathe, and a reservation flow that never breaks the mood. Elegant without being stiff.</p>
+              <p class="proj-desc" data-i18n="p2.desc">Candlelight as a design system. Wine-dark burgundy, parchment and gold, serif type with room to breathe, and a reservation flow that never breaks the mood. Elegant without being stiff.</p>
               <div class="proj-arch">
                 <b data-i18n="lbl.arch">Scroll architecture</b>
                 <span data-i18n="p2.arch">Full-screen chapters — the page moves like a tasting menu, one course at a time, each frame composed like a plate.</span>
@@ -818,7 +858,7 @@ footer{
                 <span data-i18n="p4.tag1">Dental clinic</span>
                 <span data-i18n="p4.tag2">Concept build</span>
               </div>
-              <p class="proj-desc" data-i18n="p4.desc">The opposite problem: dental sites usually try too hard. Lumio is calm on purpose — clinical white, one soft blue, generous space, and the booking button always within reach.</p>
+              <p class="proj-desc" data-i18n="p4.desc">The opposite problem: dental sites usually try too hard. Lumio is calm on purpose — clinical white, deep teal with a touch of gold, generous space, and the booking button always within reach.</p>
               <div class="proj-arch">
                 <b data-i18n="lbl.arch">Scroll architecture</b>
                 <span data-i18n="p4.arch">Precision grid with soft parallax — content glides on a strict column system while imagery drifts a half-step behind. Calm is engineered.</span>
@@ -929,7 +969,7 @@ footer{
           <p class="rv" data-i18n="about.p2">I work from Tbilisi and build mostly for local businesses: cafés, restaurants, gyms, clinics. Places whose sites are usually an afterthought — a template with the logo swapped. <b>I think a corner coffee shop deserves the same design attention as a startup with funding.</b> That belief is the studio.</p>
           <p class="rv" data-i18n="about.p3">Each build starts from what makes that business different, which is why no two projects above share a layout, a typeface system, or a scroll. If you want a website that looks like everyone else's, I'm the wrong person. Happily.</p>
           <div class="about-facts rv">
-            <div><div class="v">5</div><div class="k" data-i18n="f1">builds shipped</div></div>
+            <div><div class="v">4</div><div class="k" data-i18n="f1">builds shipped</div></div>
             <div><div class="v">1</div><div class="k" data-i18n="f2">person, no handoffs</div></div>
             <div><div class="v">2</div><div class="k" data-i18n="f3">languages — EN / GE</div></div>
             <div><div class="v">0</div><div class="k" data-i18n="f4">templates used. ever.</div></div>
@@ -951,19 +991,22 @@ footer{
     <!-- ============ CONTACT ============ -->
     <section id="contact">
       <div class="contact-in">
-        <span class="contact-k" data-i18n="c.k">contact / no forms, just a person</span>
-        <h2 class="contact-h disp-x" data-i18n-html="c.h">
-          <span class="row"><span>Your business is</span></span>
-          <span class="row"><span>next. <span class="thin" style="color:rgba(255,255,255,.85)">Let's talk.</span></span></span>
-        </h2>
-        <a class="mail-line magnet" href="mailto:dimadziapshipa@gmail.com">dimadziapshipa@gmail.com <span class="arr">↗</span></a>
-        <div class="contact-links">
-          <a href="https://instagram.com/ddstudio.tbilisi" target="_blank" rel="noopener">Instagram — @ddstudio.tbilisi ↗</a>
-          <a href="https://github.com/dimitri309" target="_blank" rel="noopener">GitHub — dimitri309 ↗</a>
-          <span class="mono-l" style="color:rgba(255,255,255,.5)" data-i18n="c.note">replies within a day, usually faster</span>
+        <div class="term">
+          <div class="term-bar">
+            <div class="brw-dots"><i></i><i></i><i></i></div>
+            <span class="term-title" data-i18n="c.k">contact / no forms, just a person</span>
+          </div>
+          <div class="term-body" id="term-body">
+            <span class="t-line"><span class="t-prompt">dima@dd-studio:~$</span> <span class="t-cmd">contact --start-project</span></span>
+            <h2 class="t-line t-big" data-i18n-html="c.h">your business is next. <span class="t-ok">let's talk.</span></h2>
+            <span class="t-line"><span class="t-key">&gt; email:      </span><a href="mailto:dimadziapshipa@gmail.com">dimadziapshipa@gmail.com ↗</a></span>
+            <span class="t-line"><span class="t-key">&gt; instagram:  </span><a href="https://instagram.com/ddstudio.tbilisi" target="_blank" rel="noopener">@ddstudio.tbilisi ↗</a></span>
+            <span class="t-line"><span class="t-key">&gt; github:     </span><a href="https://github.com/dimitri309" target="_blank" rel="noopener">dimitri309 ↗</a></span>
+            <span class="t-line"><span class="t-key">&gt; reply_time: </span><span data-i18n="c.note">~1 day, usually faster</span></span>
+            <span class="t-line"><span class="t-key">&gt; status:     </span><span class="t-ok">online</span> <span class="t-cursor" aria-hidden="true">▊</span></span>
+          </div>
         </div>
       </div>
-      <div class="contact-glyph" aria-hidden="true">DD</div>
     </section>
 
   </main>
@@ -1002,13 +1045,13 @@ footer{
     "p1.desc":"ყავის სახლის ვებგვერდი, რომელიც თავად სივრცის ატმოსფეროს იმეორებს — თბილი ფერებით, წიგნის გვერდივით აწყობილი მენიუთი და ფოტოგრაფიით, რომელიც ახლადმომზადებული ესპრესოს არომატს აგრძნობინებს. ყველაფერი შექმნილია ისე, რომ სტუმრობის სურვილი პირველივე შთაბეჭდილებიდან გაგიჩნდეს.",
     "p1.arch":"ნელი, სარედაქციო სტილის სქროლი, სადაც თითოეული სექცია რბილად ეშვება, როგორც რძე ყავაში. მენიუ თავად დიზაინის ნაწილია — ცოცხალი ტიპოგრაფიით წარმოდგენილი და არა PDF დოკუმენტის სახით.",
     "p2.tag1":"იტალიური რესტორანი","p2.tag2":"კონცეფცია",
-    "p2.desc":"სანთლის შუქი როგორც დიზაინ-სისტემა. მუქი მწვანე და ბორდო, სერიფული შრიფტი სუნთქვის სივრცით და ჯავშნის ნაკადი, რომელიც განწყობას არ არღვევს.",
+    "p2.desc":"სანთლის შუქი როგორც დიზაინ-სისტემა. მუქი ბორდო, პერგამენტისფერი და ოქრო, სერიფული შრიფტი სუნთქვის სივრცით და ჯავშნის ნაკადი, რომელიც განწყობას არ არღვევს.",
     "p2.arch":"მთელი ეკრანის თავები — გვერდი დეგუსტაციური მენიუსავით მოძრაობს: თითო კერძი, თითო კადრი.",
     "p3.tag1":"დარბაზი / ფიტნესი","p3.tag2":"კონცეფცია",
     "p3.desc":"შეკუმშული ასოები, მკაცრი ხაზები, წითელი შავზე. დარბაზის საიტი საწვრთნელი დარბაზის ენერგიით — გაწევრიანება გადაწყვეტილებას ჰგავს და არა ფორმას.",
     "p3.arch":"მიმაგრებული გაყოფილი ეკრანი — მარცხენა ნახევარი ფოტოებზეა გაჩერებული და სქროლისას იცვლება, მარჯვენა კი პროგრამებზე მოძრაობს.",
     "p4.tag1":"სტომატოლოგიური კლინიკა","p4.tag2":"კონცეფცია",
-    "p4.desc":"საპირისპირო პრობლემა: სტომატოლოგების საიტები ხშირად ზედმეტს ცდილობენ. Lumio განზრახ მშვიდია — თეთრი, ერთი რბილი ლურჯი, ბევრი ჰაერი და ჯავშნის ღილაკი ყოველთვის ხელთან.",
+    "p4.desc":"საპირისპირო პრობლემა: სტომატოლოგების საიტები ხშირად ზედმეტს ცდილობენ. Lumio განზრახ მშვიდია — თეთრი, მუქი ფირუზისფერი ოქროსფერი აქცენტით, ბევრი ჰაერი და ჯავშნის ღილაკი ყოველთვის ხელთან.",
     "p4.arch":"ზუსტი ბადე რბილი პარალაქსით — კონტენტი მკაცრ სვეტებზე სრიალებს, ფოტოები კი ნახევარი ნაბიჯით ჩამორჩებიან. სიმშვიდე გათვლილია.",
     "svc.h":"<span>ყველაფერი — ერთ ხელში</span>",
     "svc.side":"დიზაინს, კოდს, ჰოსტინგსა და ჩაბარებას ერთი ადამიანი აკეთებს. განყოფილებებს შორის არაფერი იკარგება — განყოფილებები არ არსებობს.",
@@ -1034,8 +1077,8 @@ footer{
     "f1":"გაშვებული პროექტი","f2":"ადამიანი, გადაბარებების გარეშე","f3":"ენა — EN / GE","f4":"გამოყენებული შაბლონი",
     "cap1":"თბილისი — ბაზა","cap2":"მთელი განყოფილება",
     "c.k":"კონტაქტი / ფორმების გარეშე — უბრალოდ ადამიანი",
-    "c.h":'<span class="row"><span>შენი ბიზნესი</span></span><span class="row"><span>შემდეგია. <span class="thin" style="color:rgba(255,255,255,.85)">მომწერე.</span></span></span>',
-    "c.note":"გპასუხობ ერთ დღეში, ხშირად უფრო მალე",
+    "c.h":'შენი ბიზნესი შემდეგია. <span class="t-ok">მომწერე.</span>',
+    "c.note":"~1 დღე, ხშირად უფრო მალე",
     "ft.note":"დახატულია და აწყობილია ხელით. რა თქმა უნდა."
   };
 
@@ -1089,7 +1132,7 @@ footer{
 
   function showEverything(){
     [].slice.call(document.querySelectorAll(".rv")).forEach(function(el){ el.style.opacity = 1; el.style.transform = "none"; });
-    [].slice.call(document.querySelectorAll(".rv-l > span, .hero-h .row > span, .contact-h .row > span")).forEach(function(el){ el.style.transform = "none"; });
+    [].slice.call(document.querySelectorAll(".rv-l > span, .hero-h .row > span")).forEach(function(el){ el.style.transform = "none"; });
     if (loader) loader.style.display = "none";
   }
 
@@ -1226,17 +1269,56 @@ footer{
   });
 
   /* ==============================================================
-     Contact headline + photo parallax
+     Contact — the terminal types itself on arrival
   ============================================================== */
-  gsap.set(".contact-h .row > span", { y: "110%" });
-  gsap.to(".contact-h .row > span", {
-    y: 0, duration: 1.1, ease: "power4.out", stagger: .1,
-    scrollTrigger: { trigger: "#contact", start: "top 70%", once: true }
-  });
-  gsap.from(".contact-glyph", {
-    yPercent: 40, ease: "none",
-    scrollTrigger: { trigger: "#contact", start: "top bottom", end: "bottom bottom", scrub: true }
-  });
+  (function(){
+    var contact = document.getElementById("contact");
+    var body = document.getElementById("term-body");
+    if (!contact || !body) return;
+    contact.classList.add("armed");   /* hide lines until typed; i18n can still swap text under it */
+    ScrollTrigger.create({
+      trigger: "#contact", start: "top 72%", once: true,
+      onEnter: function(){
+        var lines = [].slice.call(body.querySelectorAll(".t-line"));
+        /* capture text nodes now — after any language switch — then blank them */
+        var queue = lines.map(function(line){
+          var nodes = [];
+          (function walk(n){
+            [].slice.call(n.childNodes).forEach(function(c){
+              if (c.nodeType === 3){ nodes.push({ node: c, text: c.nodeValue }); c.nodeValue = ""; }
+              else if (c.nodeType === 1 && !c.classList.contains("t-cursor")) walk(c);
+            });
+          })(line);
+          return { line: line, nodes: nodes };
+        });
+        var cursor = body.querySelector(".t-cursor");
+        if (cursor) cursor.style.visibility = "hidden";
+        var li = 0;
+        function nextLine(){
+          if (li >= queue.length){
+            if (cursor) cursor.style.visibility = "";
+            contact.classList.remove("armed");
+            queue.forEach(function(q){ q.line.style.visibility = ""; });
+            return;
+          }
+          var item = queue[li++];
+          item.line.style.visibility = "visible";
+          /* the command is typed by a human; the output prints machine-fast */
+          var speed = li === 1 ? 46 : 11;
+          var ni = 0, ci = 0;
+          (function tick(){
+            if (ni >= item.nodes.length){ setTimeout(nextLine, li === 1 ? 340 : 95); return; }
+            var n = item.nodes[ni];
+            n.node.nodeValue = n.text.slice(0, ++ci);
+            if (ci >= n.text.length){ ni++; ci = 0; }
+            setTimeout(tick, speed);
+          })();
+        }
+        nextLine();
+      }
+    });
+  })();
+
   gsap.utils.toArray(".ph img").forEach(function(img){
     gsap.fromTo(img, { yPercent: -6 }, {
       yPercent: 6, ease: "none",
